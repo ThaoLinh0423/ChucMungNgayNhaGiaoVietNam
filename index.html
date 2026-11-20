@@ -103,48 +103,10 @@
           <p class="gallery-desc">Mỗi bức ảnh là một thước phim quý giá về tình yêu thương vô bờ bến.</p>
         </div>
 
-        <div class="photo-grid">
-          <!-- Ảnh 1 -->
-          <div class="polaroid-card" data-full="images/photo1.svg" data-caption="Nụ cười rạng rỡ và hạnh phúc của Bố Mẹ">
-            <div class="tape-washi"></div>
-            <div class="photo-frame">
-              <img src="images/photo1.svg" alt="Khoảnh khắc hạnh phúc của bố mẹ" loading="lazy">
-            </div>
-            <p class="photo-caption">Nụ cười rạng rỡ của Bố Mẹ 🌸</p>
-          </div>
-
-          <!-- Ảnh 2 -->
-          <div class="polaroid-card" data-full="images/photo2.svg" data-caption="Gia đình mình luôn bên nhau, ấm áp và bình yên">
-            <div class="tape-washi"></div>
-            <div class="photo-frame">
-              <img src="images/photo2.svg" alt="Tình cảm gia đình ấm áp" loading="lazy">
-            </div>
-            <p class="photo-caption">Bình yên bên mái ấm gia đình 🏡</p>
-          </div>
-
-          <!-- Ảnh 3 -->
-          <div class="polaroid-card" data-full="images/photo3.svg" data-caption="Bố Mẹ - Người thầy đầu tiên luôn dìu dắt từng bước đi">
-            <div class="tape-washi"></div>
-            <div class="photo-frame">
-              <img src="images/photo3.svg" alt="Dìu dắt và yêu thương" loading="lazy">
-            </div>
-            <p class="photo-caption">Dìu dắt con từng bước trưởng thành 🕊️</p>
-          </div>
-
-          <!-- Ảnh 4 -->
-          <div class="polaroid-card" data-full="images/photo4.svg" data-caption="Chúc Bố Mẹ luôn tràn ngập sức khỏe và nụ cười">
-            <div class="tape-washi"></div>
-            <div class="photo-frame">
-              <img src="images/photo4.svg" alt="Mãi mãi yêu thương" loading="lazy">
-            </div>
-            <p class="photo-caption">Yêu thương đong đầy năm tháng ❤️</p>
-          </div>
+        <div class="photo-grid" id="photo-grid">
+          <!-- Ảnh kỷ niệm sẽ được tự động nạp từ thư mục images/ -->
         </div>
 
-        <!-- Hộp hướng dẫn nhỏ cho người dùng thay ảnh -->
-        <div class="user-guide-tip">
-          💡 <strong>Mẹo nhỏ:</strong> Bạn có thể dễ dàng thay đổi các bức ảnh bằng cách lưu ảnh thật của gia đình vào thư mục <code>images/</code> và cập nhật tên ảnh trong mã nguồn nhé!
-        </div>
 
         <!-- Nút bắn thêm hoa và chúc mừng -->
         <div class="re-celebrate-wrapper">
@@ -171,6 +133,8 @@
     </div>
   </div>
 
+  <!-- Dữ liệu danh sách ảnh tự động nạp -->
+  <script src="js/images-data.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

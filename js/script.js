@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxCaption = document.getElementById('lightbox-caption');
   const lightboxClose = document.getElementById('lightbox-close');
   const lightboxOverlay = document.getElementById('lightbox-overlay');
-  const polaroids = document.querySelectorAll('.polaroid-card');
+  const photoGrid = document.getElementById('photo-grid');
 
   let isCelebrated = false;
 
@@ -135,19 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------------------------------------------------
-     3. LIGHTBOX XEM ẢNH KỶ NIỆM TO
+     3. TỰ ĐỘNG HIỂN THỊ ALBUM ẢNH & LIGHTBOX
      --------------------------------------------------- */
-  polaroids.forEach(card => {
-    card.addEventListener('click', () => {
-      const fullSrc = card.getAttribute('data-full');
-      const caption = card.getAttribute('data-caption');
-
-      lightboxImg.src = fullSrc;
-      lightboxCaption.textContent = caption || '';
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
-    });
-  });
+  function openLightbox(src, caption) {
+    lightboxImg.src = src;
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
 
   function closeLightbox() {
     lightbox.classList.remove('active');
@@ -156,6 +151,42 @@ document.addEventListener('DOMContentLoaded', () => {
       lightboxImg.src = '';
     }, 300);
   }
+
+  function renderPhotoGallery() {
+    if (!photoGrid) return;
+    const images = window.GALLERY_IMAGES || [];
+    if (images.length === 0) return;
+
+    photoGrid.innerHTML = '';
+    const rotations = [-2, 2.5, -1.5, 2, -2.5, 1.8, -1.2];
+
+    images.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'polaroid-card';
+      card.setAttribute('data-full', item.src);
+      card.setAttribute('data-caption', item.caption || `Khoảnh khắc bên Bố Mẹ #${index + 1}`);
+
+      const rot = rotations[index % rotations.length];
+      card.style.transform = `rotate(${rot}deg)`;
+
+      card.innerHTML = `
+        <div class="tape-washi"></div>
+        <div class="photo-frame">
+          <img src="${item.src}" alt="${item.caption || 'Ảnh kỷ niệm'}" loading="lazy" />
+        </div>
+        <p class="photo-caption">${item.caption || 'Bố Mẹ Kính Yêu ❤️'}</p>
+      `;
+
+      card.addEventListener('click', () => {
+        openLightbox(item.src, item.caption);
+      });
+
+      photoGrid.appendChild(card);
+    });
+  }
+
+  // Tự động khởi tạo album ảnh
+  renderPhotoGallery();
 
   if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
   if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
