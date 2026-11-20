@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0F5"/>
+      <stop offset="100%" stop-color="#FCE4EC"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="url(#bgGrad2)"/>
+
+  <!-- Ngôi nhà hạnh phúc -->
+  <g transform="translate(150, 140)">
+    <!-- Mái nhà hồng pastel -->
+    <polygon points="100,20 0,110 200,110" fill="#F48FB1" stroke="#C2185B" stroke-width="3"/>
+    <!-- Thân nhà -->
+    <rect x="25" y="110" width="150" height="130" fill="#FFFFFF" stroke="#F48FB1" stroke-width="3" rx="8"/>
+    <!-- Cửa chính hình vòm -->
+    <path d="M75,240 L75,170 A25,25 0 0,1 125,170 L125,240 Z" fill="#F8BBD0"/>
+    <circle cx="115" cy="205" r="4" fill="#C2185B"/>
+    <!-- Cửa sổ tim -->
+    <circle cx="100" cy="75" r="18" fill="#FFF"/>
+    <path d="M100,70 A4,4 0 0,0 95,75 A4,4 0 0,0 100,82 A4,4 0 0,0 105,75 A4,4 0 0,0 100,70 Z" fill="#EC407A" transform="scale(1.3) translate(-23, -20)"/>
+  </g>
+
+  <!-- Cây hoa nở rộ hai bên -->
+  <g transform="translate(60, 260)">
+    <rect x="25" y="40" width="12" height="70" fill="#8D6E63" rx="3"/>
+    <circle cx="31" cy="30" r="35" fill="#FF80AB" opacity="0.9"/>
+    <circle cx="15" cy="20" r="25" fill="#FF4081" opacity="0.8"/>
+    <circle cx="45" cy="20" r="25" fill="#F48FB1" opacity="0.8"/>
+  </g>
+
+  <g transform="translate(370, 270)">
+    <rect x="25" y="40" width="12" height="60" fill="#8D6E63" rx="3"/>
+    <circle cx="31" cy="30" r="32" fill="#F48FB1" opacity="0.9"/>
+    <circle cx="15" cy="25" r="22" fill="#FF80AB" opacity="0.8"/>
+    <circle cx="45" cy="25" r="22" fill="#FF4081" opacity="0.8"/>
+  </g>
+
+  <!-- Trái tim ấm áp toả sáng -->
+  <path d="M250,90 C250,90 220,50 185,75 C150,100 185,140 250,180 C315,140 350,100 315,75 C280,50 250,90 250,90 Z" fill="#FF4081" opacity="0.25"/>
+
+  <text x="250" y="440" font-family="'Quicksand', sans-serif" font-weight="700" font-size="24" fill="#880E4F" text-anchor="middle">
+    Mái Ấm Bình Yên Của Bố Mẹ 🏡
+  </text>
+  <text x="250" y="468" font-family="'Quicksand', sans-serif" font-size="16" fill="#AD1457" text-anchor="middle">
+    Nơi luôn đón con trở về với tình yêu thương
+  </text>
+</svg>

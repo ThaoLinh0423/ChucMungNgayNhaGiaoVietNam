@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4EC"/>
+      <stop offset="100%" stop-color="#FFCDD2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="url(#bgGrad4)"/>
+
+  <!-- Trái tim lớn kết từ những bông hoa hồng -->
+  <g transform="translate(250, 210)">
+    <!-- Trái tim nền mờ -->
+    <path d="M0,70 C-100,-30 -160,80 0,180 C160,80 100,-30 0,70 Z" fill="#F8BBD0" opacity="0.6"/>
+
+    <!-- Các bông hoa nở xung quanh -->
+    <circle cx="-50" cy="40" r="22" fill="#E91E63"/>
+    <circle cx="-50" cy="40" r="12" fill="#F48FB1"/>
+
+    <circle cx="50" cy="40" r="22" fill="#E91E63"/>
+    <circle cx="50" cy="40" r="12" fill="#F48FB1"/>
+
+    <circle cx="0" cy="110" r="25" fill="#D81B60"/>
+    <circle cx="0" cy="110" r="14" fill="#FF80AB"/>
+
+    <circle cx="-80" cy="85" r="18" fill="#F06292"/>
+    <circle cx="80" cy="85" r="18" fill="#F06292"/>
+
+    <!-- Lá xanh điểm xuyết -->
+    <path d="M-80,40 Q-105,30 -95,15 Q-75,25 -80,40 Z" fill="#81C784"/>
+    <path d="M80,40 Q105,30 95,15 Q75,25 80,40 Z" fill="#81C784"/>
+  </g>
+
+  <!-- Huy hiệu 20/11 lấp lánh -->
+  <g transform="translate(250, 110)">
+    <circle cx="0" cy="0" r="45" fill="#FFF" stroke="#EC407A" stroke-width="4"/>
+    <circle cx="0" cy="0" r="38" fill="#FFF0F5"/>
+    <text x="0" y="8" font-family="'Playfair Display', serif" font-weight="700" font-size="20" fill="#C2185B" text-anchor="middle">
+      20 - 11
+    </text>
+  </g>
+
+  <!-- Lời chúc đong đầy -->
+  <text x="250" y="435" font-family="'Quicksand', sans-serif" font-weight="700" font-size="24" fill="#880E4F" text-anchor="middle">
+    Yêu Thương Đong Đầy Năm Tháng ❤️
+  </text>
+  <text x="250" y="465" font-family="'Quicksand', sans-serif" font-size="16" fill="#AD1457" text-anchor="middle">
+    Kính chúc Bố Mẹ luôn bình an, mạnh khỏe và hạnh phúc!
+  </text>
+</svg>
