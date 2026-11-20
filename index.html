@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri Ân Bố Mẹ - Chúc Mừng 20/11 Kính Yêu</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Hiệu ứng cánh hoa bay nền -->
+  <div id="petals-container" aria-hidden="true"></div>
+
+  <!-- Nút điều khiển âm nhạc góc phải -->
+  <button id="music-toggle" class="music-btn" title="Bật/Tắt nhạc nền" aria-label="Bật/Tắt nhạc nền">
+    <span class="music-icon">🎵</span>
+    <span class="music-wave">
+      <span></span><span></span><span></span>
+    </span>
+  </button>
+
+  <div class="main-wrapper">
+    <!-- MÀN HÌNH CHÀO (HERO SECTION) -->
+    <section id="hero-section" class="hero-section">
+      <div class="badge-tag">🌸 Ngày Nhà Giáo Việt Nam 20-11 🌸</div>
+      
+      <h1 class="hero-title">Gửi Bố Mẹ Kính Yêu Của Con</h1>
+      <p class="hero-subtitle">
+        Người thầy đầu tiên, vĩ đại và bao dung nhất trong cuộc đời con.
+      </p>
+
+      <!-- Hộp thư / Phong bì tương tác -->
+      <div class="envelope-container" id="envelope-trigger">
+        <div class="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="wax-seal">
+              <span>20/11</span>
+            </div>
+          </div>
+          <div class="letter-peek">💌</div>
+        </div>
+      </div>
+
+      <!-- Nút bấm chúc mừng chính -->
+      <button id="btn-congratulate" class="btn-celebrate">
+        <span class="btn-sparkle">✨</span>
+        <span class="btn-text">Bấm Để Mở Lời Chúc Mừng</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+
+      <p class="click-hint">Chạm vào nút để mở phong thư và đón nhận bất ngờ nhé bố mẹ!</p>
+    </section>
+
+    <!-- KHU VỰC NỘI DUNG CHÍNH (XUẤT HIỆN SAU KHI CLICK) -->
+    <section id="content-section" class="content-section hidden">
+      <!-- BỨC THƯ LỜI CHÚC -->
+      <div class="letter-card" id="letter-card">
+        <div class="ribbon-flower">🌸 20.11 Tri Ân Bố Mẹ 🌸</div>
+
+        <h2 class="letter-heading">Tri Ân Những "Người Thầy" Vĩ Đại Nhất!</h2>
+        
+        <div class="letter-divider">
+          <span>❦</span>
+        </div>
+
+        <div class="letter-body">
+          <p class="greeting-highlight">Bố mẹ kính yêu của con,</p>
+          <p>
+            Nhân ngày Nhà giáo Việt Nam 20-11, con muốn gửi đến bố mẹ lời tri ân sâu sắc và trọn vẹn yêu thương nhất từ tận đáy lòng mình.
+          </p>
+          <p>
+            Dù trên bục giảng lớp học hay trong ngôi nhà nhỏ thân thương, bố mẹ luôn là những người thầy tuyệt vời nhất của con. Bố mẹ dạy con từng nét chữ đầu đời, dạy con cách làm người tử tế, dạy con biết yêu thương, kiên cường và bao dung trước mọi sóng gió cuộc đời.
+          </p>
+          <p>
+            Mỗi giọt mồ hôi của bố, mỗi tiếng ân cần của mẹ chính là hành trang quý giá nhất nâng bước con lớn khôn.
+          </p>
+          <p class="wish-highlight">
+            Con kính chúc Bố Mẹ luôn dồi dào sức khỏe, tràn đầy niềm vui, an yên trong tâm hồn và luôn tự hào về chúng con!
+          </p>
+        </div>
+
+        <div class="letter-signature">
+          <p class="sign-text">Con yêu Bố Mẹ rất nhiều,</p>
+          <p class="sign-author">Con của Bố Mẹ ❤️</p>
+        </div>
+      </div>
+
+      <!-- KHU VỰC BỘ SƯU TẬP ẢNH KỶ NIỆM (Ở DƯỚI LỜI CHÚC) -->
+      <div class="gallery-wrapper">
+        <div class="gallery-header">
+          <span class="gallery-sub">Album Kỷ Niệm Gia Đình</span>
+          <h3 class="gallery-title">Những Khoảnh Khắc Ấm Áp Bên Bố Mẹ</h3>
+          <p class="gallery-desc">Mỗi bức ảnh là một thước phim quý giá về tình yêu thương vô bờ bến.</p>
+        </div>
+
+        <div class="photo-grid">
+          <!-- Ảnh 1 -->
+          <div class="polaroid-card" data-full="images/photo1.svg" data-caption="Nụ cười rạng rỡ và hạnh phúc của Bố Mẹ">
+            <div class="tape-washi"></div>
+            <div class="photo-frame">
+              <img src="images/photo1.svg" alt="Khoảnh khắc hạnh phúc của bố mẹ" loading="lazy">
+            </div>
+            <p class="photo-caption">Nụ cười rạng rỡ của Bố Mẹ 🌸</p>
+          </div>
+
+          <!-- Ảnh 2 -->
+          <div class="polaroid-card" data-full="images/photo2.svg" data-caption="Gia đình mình luôn bên nhau, ấm áp và bình yên">
+            <div class="tape-washi"></div>
+            <div class="photo-frame">
+              <img src="images/photo2.svg" alt="Tình cảm gia đình ấm áp" loading="lazy">
+            </div>
+            <p class="photo-caption">Bình yên bên mái ấm gia đình 🏡</p>
+          </div>
+
+          <!-- Ảnh 3 -->
+          <div class="polaroid-card" data-full="images/photo3.svg" data-caption="Bố Mẹ - Người thầy đầu tiên luôn dìu dắt từng bước đi">
+            <div class="tape-washi"></div>
+            <div class="photo-frame">
+              <img src="images/photo3.svg" alt="Dìu dắt và yêu thương" loading="lazy">
+            </div>
+            <p class="photo-caption">Dìu dắt con từng bước trưởng thành 🕊️</p>
+          </div>
+
+          <!-- Ảnh 4 -->
+          <div class="polaroid-card" data-full="images/photo4.svg" data-caption="Chúc Bố Mẹ luôn tràn ngập sức khỏe và nụ cười">
+            <div class="tape-washi"></div>
+            <div class="photo-frame">
+              <img src="images/photo4.svg" alt="Mãi mãi yêu thương" loading="lazy">
+            </div>
+            <p class="photo-caption">Yêu thương đong đầy năm tháng ❤️</p>
+          </div>
+        </div>
+
+        <!-- Hộp hướng dẫn nhỏ cho người dùng thay ảnh -->
+        <div class="user-guide-tip">
+          💡 <strong>Mẹo nhỏ:</strong> Bạn có thể dễ dàng thay đổi các bức ảnh bằng cách lưu ảnh thật của gia đình vào thư mục <code>images/</code> và cập nhật tên ảnh trong mã nguồn nhé!
+        </div>
+
+        <!-- Nút bắn thêm hoa và chúc mừng -->
+        <div class="re-celebrate-wrapper">
+          <button id="btn-fireworks" class="btn-secondary">
+            💖 Thả Thêm Ngàn Trái Tim Tặng Bố Mẹ 💖
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER NHẸ NHÀNG -->
+    <footer class="footer">
+      <p>Thiết kế dành riêng tặng Bố Mẹ nhân ngày 20-11 • Ngày Nhà Giáo Việt Nam</p>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX XEM ẢNH PHÓNG TO -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Đóng">&times;</button>
+      <img id="lightbox-img" src="" alt="Xem ảnh to">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

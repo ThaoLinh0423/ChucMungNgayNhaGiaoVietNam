@@ -1,0 +1,716 @@
+/* ===================================================
+   TONE MÀU HỒNG PASTEL - GIAO DIỆN TRI ÂN 20-11
+   =================================================== */
+
+:root {
+  --bg-gradient: linear-gradient(145deg, #FFF5F7 0%, #FDE8ED 45%, #F8BBD0 100%);
+  --pastel-pink-light: #FFF0F5;
+  --pastel-pink-soft: #FCE4EC;
+  --pastel-pink: #F8BBD0;
+  --pastel-pink-medium: #F48FB1;
+  --pastel-pink-dark: #EC407A;
+  --pastel-rose: #D81B60;
+  --pastel-wine: #880E4F;
+  --text-primary: #4A3E3D;
+  --text-secondary: #795548;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --shadow-soft: 0 10px 30px rgba(236, 64, 122, 0.12);
+  --shadow-hover: 0 18px 40px rgba(236, 64, 122, 0.22);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hiệu ứng cánh hoa bay nền */
+#petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -20px;
+  background: radial-gradient(circle, #FFA4B6 0%, #FFCCD5 100%);
+  border-radius: 150% 0 150% 0;
+  opacity: 0.65;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(40px);
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(-30px);
+    opacity: 0.1;
+  }
+}
+
+/* Bố cục trang web */
+.main-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Nút điều khiển âm thanh */
+.music-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--pastel-pink);
+  border-radius: 50px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.15);
+  transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+  background: #FFF;
+  border-color: var(--pastel-pink-dark);
+}
+
+.music-wave {
+  display: inline-flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 14px;
+}
+
+.music-wave span {
+  width: 3px;
+  height: 100%;
+  background-color: var(--pastel-pink-dark);
+  border-radius: 3px;
+  animation: none;
+}
+
+.music-btn.playing .music-wave span:nth-child(1) {
+  animation: wave 0.8s ease-in-out infinite alternate;
+}
+.music-btn.playing .music-wave span:nth-child(2) {
+  animation: wave 0.8s ease-in-out 0.2s infinite alternate;
+}
+.music-btn.playing .music-wave span:nth-child(3) {
+  animation: wave 0.8s ease-in-out 0.4s infinite alternate;
+}
+
+@keyframes wave {
+  0% { height: 4px; }
+  100% { height: 14px; }
+}
+
+/* ===================================================
+   MÀN HÌNH CHÀO (HERO SECTION)
+   =================================================== */
+.hero-section {
+  text-align: center;
+  padding: 40px 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.badge-tag {
+  display: inline-block;
+  background: #FFE4EC;
+  color: var(--pastel-wine);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  padding: 8px 24px;
+  border-radius: 30px;
+  border: 1px dashed var(--pastel-pink-medium);
+  margin-bottom: 20px;
+  animation: bounceSoft 2s infinite ease-in-out;
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--pastel-wine);
+  margin-bottom: 12px;
+  line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(136, 14, 79, 0.08);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #6D4C41;
+  max-width: 600px;
+  margin-bottom: 35px;
+  font-weight: 500;
+}
+
+/* Phong bì tương tác */
+.envelope-container {
+  perspective: 1000px;
+  margin: 15px 0 35px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope-container:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.envelope {
+  position: relative;
+  width: 220px;
+  height: 140px;
+  background: #FFF;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(236, 64, 122, 0.18);
+  border: 2px solid var(--pastel-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 70px solid #FDE8ED;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.wax-seal {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  background: radial-gradient(circle, #EC407A 0%, #C2185B 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(194, 24, 91, 0.35);
+  border: 2px solid #FFF;
+  z-index: 4;
+}
+
+.letter-peek {
+  font-size: 2.2rem;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.envelope.open .letter-peek {
+  transform: translateY(-40px);
+}
+
+/* Nút Chúc Mừng */
+.btn-celebrate {
+  background: linear-gradient(135deg, #EC407A 0%, #D81B60 100%);
+  color: #FFF;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 16px 42px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.35);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-celebrate:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(216, 27, 96, 0.45);
+  background: linear-gradient(135deg, #F06292 0%, #C2185B 100%);
+}
+
+.btn-celebrate:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.click-hint {
+  margin-top: 15px;
+  font-size: 0.92rem;
+  color: #8D6E63;
+  font-style: italic;
+}
+
+/* ===================================================
+   KHU VỰC NỘI DUNG (XUẤT HIỆN SAU KHI CLICK)
+   =================================================== */
+.content-section {
+  width: 100%;
+  margin-top: 40px;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.content-section.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.content-section.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BỨC THƯ LỜI CHÚC (LETTER CARD) */
+.letter-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 50px 40px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(248, 187, 208, 0.6);
+  position: relative;
+  margin-bottom: 60px;
+  background-image: 
+    radial-gradient(#F8BBD0 0.75px, transparent 0.75px),
+    radial-gradient(#FCE4EC 0.75px, #FFFFFF 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.letter-card::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  border: 1.5px solid var(--pastel-pink);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.ribbon-flower {
+  display: inline-block;
+  background: var(--pastel-pink-soft);
+  color: var(--pastel-wine);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.letter-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  color: var(--pastel-wine);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.letter-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0 25px;
+  color: var(--pastel-pink-dark);
+  font-size: 1.5rem;
+}
+
+.letter-body {
+  font-size: 1.12rem;
+  color: #4E342E;
+  text-align: justify;
+}
+
+.letter-body p {
+  margin-bottom: 18px;
+}
+
+.greeting-highlight {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--pastel-wine);
+  text-align: left;
+}
+
+.wish-highlight {
+  background: linear-gradient(135deg, rgba(252, 228, 236, 0.8), rgba(248, 187, 208, 0.4));
+  padding: 16px 22px;
+  border-radius: 14px;
+  border-left: 4px solid var(--pastel-pink-dark);
+  font-weight: 600;
+  color: var(--pastel-wine);
+  text-align: left;
+}
+
+.letter-signature {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.sign-text {
+  font-size: 1.05rem;
+  color: #6D4C41;
+  font-style: italic;
+}
+
+.sign-author {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--pastel-wine);
+  margin-top: 4px;
+}
+
+/* ===================================================
+   KHU VỰC ALBUM ẢNH KỶ NIỆM (GALLERY)
+   =================================================== */
+.gallery-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.gallery-header {
+  margin-bottom: 35px;
+}
+
+.gallery-sub {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--pastel-pink-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gallery-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--pastel-wine);
+  margin-top: 6px;
+}
+
+.gallery-desc {
+  color: #795548;
+  font-size: 1.05rem;
+  margin-top: 8px;
+}
+
+/* Grid 4 ảnh Polaroid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.polaroid-card {
+  background: #FFFFFF;
+  padding: 14px 14px 22px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(186, 104, 126, 0.16);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Xoay nhẹ từng thẻ polaroid cho tự nhiên như kẹp ảnh */
+.polaroid-card:nth-child(1) { transform: rotate(-2deg); }
+.polaroid-card:nth-child(2) { transform: rotate(2.5deg); }
+.polaroid-card:nth-child(3) { transform: rotate(-1.5deg); }
+.polaroid-card:nth-child(4) { transform: rotate(2deg); }
+
+.polaroid-card:hover {
+  transform: translateY(-8px) scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 20px 35px rgba(216, 27, 96, 0.25);
+  z-index: 5;
+}
+
+/* Băng dính Washi Tape phong cách Vintage */
+.tape-washi {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 22px;
+  background: rgba(248, 187, 208, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left: 2px dashed rgba(255, 255, 255, 0.6);
+  border-right: 2px dashed rgba(255, 255, 255, 0.6);
+}
+
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #FFF5F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-card:hover .photo-frame img {
+  transform: scale(1.06);
+}
+
+.photo-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--pastel-wine);
+  margin-top: 14px;
+}
+
+/* Hộp gợi ý thay ảnh */
+.user-guide-tip {
+  margin: 35px auto 25px;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px dashed var(--pastel-pink-medium);
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #6D4C41;
+  text-align: center;
+}
+
+.user-guide-tip code {
+  background: #FCE4EC;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: var(--pastel-wine);
+  font-weight: 600;
+}
+
+/* Nút re-celebrate */
+.re-celebrate-wrapper {
+  margin-top: 25px;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--pastel-pink-dark);
+  border: 2px solid var(--pastel-pink-dark);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--pastel-pink-dark);
+  color: #FFF;
+  box-shadow: 0 8px 20px rgba(236, 64, 122, 0.3);
+  transform: scale(1.03);
+}
+
+/* ===================================================
+   LIGHTBOX PHÓNG TO ẢNH
+   =================================================== */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 20, 28, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  max-height: 85%;
+  background: #FFF;
+  padding: 15px 15px 25px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.lightbox-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--pastel-wine);
+  margin-top: 15px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 40px;
+  height: 40px;
+  background: #EC407A;
+  color: #FFF;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #8D6E63;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   =================================================== */
+@media (max-width: 768px) {
+  .letter-card {
+    padding: 35px 20px;
+  }
+
+  .letter-body {
+    font-size: 1.02rem;
+    text-align: left;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .btn-celebrate {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+
+  .envelope {
+    width: 190px;
+    height: 125px;
+  }
+}
